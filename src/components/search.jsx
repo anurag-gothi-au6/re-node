@@ -7,7 +7,7 @@ export default class search extends Component {
       <Fragment>
         <div className='search_container'>
           <div id="wrap">
-            <form action="" autocomplete="off" >
+            <form action="" autoComplete="off" >
             <input className="search159" name="search" type="text" placeholder="What're we looking for ?"/>
             <input className="search_submit159" value="Rechercher" type="submit"/>
             </form>

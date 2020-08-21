@@ -7,7 +7,7 @@ export default class LeftSidebar extends Component {
   render() {
     return (
       <Fragment>
-        <aside class='left_sidebar'>
+        <aside className='left_sidebar'>
         <div className='custom_container_left_sidebar'>
           {/* this should be changed doing this for temperary */}
           <div className='left_sidebar_profile'>

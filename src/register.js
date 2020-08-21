@@ -4,21 +4,21 @@ import Input1 from "./components/input";
 import login_img from "./assests/img/register.jpg";
 import "./assests/css/register.css";
 import validator from "validator";
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
-const MySwal = withReactContent(Swal)
+const MySwal = withReactContent(Swal);
 const Toast = MySwal.mixin({
-    toast: true,
-    position: 'top-end',
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    onOpen: (toast) => {
-      toast.addEventListener('mouseenter', Swal.stopTimer)
-      toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-  })
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  onOpen: (toast) => {
+    toast.addEventListener("mouseenter", Swal.stopTimer);
+    toast.addEventListener("mouseleave", Swal.resumeTimer);
+  },
+});
 
 export default class login extends Component {
   constructor(props) {
@@ -28,7 +28,7 @@ export default class login extends Component {
       email: "",
       password: "",
       confirm_password: "",
-      regx159:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,100}$/g
+      regx159: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,100}$/g,
     };
   }
   handlechange = (e) => {
@@ -48,55 +48,56 @@ export default class login extends Component {
   handlesubmit = async (e) => {
     e.preventDefault();
     let a = validator.isLength(this.state.name, { min: 5 });
-    let b = this.state.regx159.test(this.state.password)
+    let b = this.state.regx159.test(this.state.password);
     let c = validator.isEmail(this.state.email);
     let temp1 = this.state.password;
     let temp2 = this.state.confirm_password;
-    let d = temp1 === temp2 ? true:false;
+    let d = temp1 === temp2 ? true : false;
     if (a === true && b === true && c === true && d === true) {
-      // let data = {
-      //   name: this.state.name,
-      //   email: this.state.email,
-      //   password: this.state.password,
-      // };
-      //here is the animation
-      Toast.fire({
-      icon: 'success',
-      title: 'Signed in successfully'
+      let data = {
+        name: this.state.name,
+        email: this.state.email,
+        password: this.state.password,
+      };
+      const url = "http://localhost:1234/api/user/register";
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(data),
       })
-      //end
-  //     const url = "";
-  //     fetch(url, {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Accept: "application/json",
-  //         "Access-Control-Allow-Origin": "*",
-  //       },
-  //       body: JSON.stringify(data),
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         localStorage.setItem("token", JSON.stringify(data.token));
-  //         if (data.value === "success") {
-  //           alert("congratulations signup successfull");
-  //           window.location.href = "/home";
-  //         }
-  //       })
-  //       .catch((err) => console.log(err));
-  //     console.log(data);
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data)
+          localStorage.setItem("token", JSON.stringify(data.accessToken));
+          if (data.accessToken) {
+            //here is the animation
+            Toast.fire({
+              icon: "success",
+              title: "Signed in successfully",
+            }).then(()=>{
+              window.location.href = "/home";
+            });
+            //end
+          }
+        })
+        .catch((err) => console.log(err));
+      console.log(data);
     } else {
-        return Toast.fire({
-          icon: 'error',
-          title: "please enter valid value"
-          })
-      }
+      return Toast.fire({
+        icon: "error",
+        title: "please enter valid value",
+      });
+    }
   };
 
   render() {
     // declaration and defination
     let errname = (
-      <div className='maroon5'>
+      <div className="maroon5">
         <Input1
           typevalue={"text"}
           placeholdervalue={"Name"}
@@ -109,7 +110,7 @@ export default class login extends Component {
       </div>
     );
     let errpassword = (
-      <div className='maroon5'>
+      <div className="maroon5">
         <Input1
           typevalue={"password"}
           placeholdervalue={"Password"}
@@ -118,13 +119,13 @@ export default class login extends Component {
           inputvalue={this.state.password}
           onchangevalue={this.handlechange}
         />
-          <p className="noerr">Min 8 letters,at least 1 uppercase,</p>
-          <p className="noerr">lowercase letter,1 number,</p>
-          <p className="noerr">and 1 special character</p>
+        <p className="noerr">Min 8 letters,at least 1 uppercase,</p>
+        <p className="noerr">lowercase letter,1 number,</p>
+        <p className="noerr">and 1 special character</p>
       </div>
     );
     let errconfirm_password = (
-      <div className='maroon5'>
+      <div className="maroon5">
         <Input1
           typevalue={"password"}
           placeholdervalue={"Confirm Password"}
@@ -133,11 +134,11 @@ export default class login extends Component {
           inputvalue={this.state.confirm_password}
           onchangevalue={this.handlechange}
         />
-          <p className="noerr">password doesn't match</p>
+        <p className="noerr">password doesn't match</p>
       </div>
     );
     let erremail = (
-      <div className='maroon5'>
+      <div className="maroon5">
         <Input1
           typevalue={"email"}
           placeholdervalue={"Email"}
@@ -154,7 +155,7 @@ export default class login extends Component {
     let name1 = validator.isLength(this.state.name, { min: 5 });
     if (name1 === false && this.state.name !== "") {
       errname = (
-        <div className='maroon5'>
+        <div className="maroon5">
           <Input1
             typevalue={"text"}
             placeholdervalue={"Name"}
@@ -269,7 +270,7 @@ export default class login extends Component {
                 </div>
                 {/* end */}
                 <div style={{ marginLeft: "17.7em", marginTop: "1em" }}>
-                  <p style={{ fontWeight: "500",marginBottom:"0em" }}>
+                  <p style={{ fontWeight: "500", marginBottom: "0em" }}>
                     or use your email for registration
                   </p>
                 </div>

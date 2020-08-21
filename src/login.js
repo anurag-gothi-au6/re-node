@@ -3,22 +3,22 @@ import { Link } from "react-router-dom";
 import Input1 from "./components/input";
 import login_img from "./assests/img/login.jpg";
 import "./assests/css/login.css";
-import validator from 'validator'
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+import validator from "validator";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
-const MySwal = withReactContent(Swal)
+const MySwal = withReactContent(Swal);
 const Toast = MySwal.mixin({
-    toast: true,
-    position: 'top-end',
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    onOpen: (toast) => {
-      toast.addEventListener('mouseenter', Swal.stopTimer)
-      toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-  })
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  onOpen: (toast) => {
+    toast.addEventListener("mouseenter", Swal.stopTimer);
+    toast.addEventListener("mouseleave", Swal.resumeTimer);
+  },
+});
 
 export default class login extends Component {
   constructor(props) {
@@ -43,13 +43,7 @@ export default class login extends Component {
       email: this.state.email1,
       password: this.state.password1,
     };
-    //here is the animation
-    Toast.fire({
-        icon: 'success',
-        title: 'Signed in successfully'
-      })
-    //  end
-    const url = "";
+    const url = "http://localhost:1234/api/user/login";
     fetch(url, {
       method: "POST",
       headers: {
@@ -61,12 +55,22 @@ export default class login extends Component {
     })
       .then((res) => res.json())
       .then((data) => {
-        localStorage.setItem("token", JSON.stringify(data.token));
-        if (data.value === "success") {
-          alert("congratulations login successfull");
-          window.location.href = "/home";
+        console.log(data);
+        localStorage.setItem("token", JSON.stringify(data.accessToken));
+        if (data.status === "success") {
+          //here is the animation
+          Toast.fire({
+            icon: "success",
+            title: "Signed in successfully",
+          }).then(()=>{
+           this.props.history.push('/home')
+          })
+          //  end
         } else {
-          alert(data.message);
+          Toast.fire({
+            icon: "error",
+            title: data.message
+          })
         }
       })
       .catch((err) => console.log(err));
@@ -174,7 +178,7 @@ export default class login extends Component {
                   onSubmit={this.handlesubmit}
                 >
                   {erremail}
-                  <br/>
+                  <br />
                   <Input1
                     typevalue={"password"}
                     placeholdervalue={"Password"}

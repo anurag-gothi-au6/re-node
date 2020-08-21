@@ -3,8 +3,10 @@ import React, { Component, Fragment } from 'react'
 import LeftSidebar from './components/left_sidebar'
 import Search from './components/search'
 import RightSidebar from './components/right_sidebar'
+import { fetch_user_details } from './redux/actions/actions'
+import { connect } from 'react-redux'
 
-export default class App extends Component {
+class App extends Component {
     constructor(props){
         super(props)
         this.state={
@@ -12,19 +14,20 @@ export default class App extends Component {
         }
     }
 
-    // componentDidMount(){
-    //     const url = "http://localhost:1234/api/user/getPost_Public";
-    //     fetch(url)
-    //     .then(res=>res.json())
-    //     .then(data1=>{
-    //         console.log(data1)
-    //         this.setState({data:data1.message})
-    //     })
-    //     .catch(err=>console.log(err))
+    componentDidMount(){
+        if(localStorage.getItem("token")){
+        let token = JSON.parse(localStorage.getItem("token"));
+        this.props.fetch_user_details(token)
+        }
+        else{
+            alert("please login/register first")
+            this.props.history.push('/login')
+        }
 
-    // }
+    }
 
     render() {
+        console.log(this.props.userdata)
         return (
             <Fragment>
                 <div className='main_container'>
@@ -46,3 +49,12 @@ export default class App extends Component {
         )
     }
 }
+
+const mapStateToProps=(state)=>{
+    return {
+        userdata:state.user_reducer.userData
+    }
+}
+
+
+export default connect(mapStateToProps,{fetch_user_details})(App)
