@@ -14,7 +14,7 @@ export default class LeftSidebar extends Component {
             <div className='left_sidebar_profile_pic_div'>     
             <img src={profilepic} alt='profile' className='left_sidebar_profile_pic'/>
             </div>
-            <span className='left_sidebar_profile_name'>Rahul Ghimire</span>
+    <span className='left_sidebar_profile_name'>{this.props.namevalue}</span>
             </div>
             {/* end */}
             {/* ----------------------------menus-----------------------------------*/}

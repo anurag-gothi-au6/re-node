@@ -8,6 +8,17 @@
   border: 1px solid black;
   width: 100em;
 }
+.post_div{
+  border: 1px solid red;
+  margin-top: 6em;
+  margin-left: 2em;
+  margin-right: 2em;
+  height: 10em;
+}
+.post_profilepic{
+  width: 3em;
+  border-radius: 50%;
+}
 
 
 

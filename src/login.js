@@ -55,7 +55,7 @@ export default class login extends Component {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         localStorage.setItem("token", JSON.stringify(data.accessToken));
         if (data.status === "success") {
           //here is the animation
@@ -74,7 +74,7 @@ export default class login extends Component {
         }
       })
       .catch((err) => console.log(err));
-    console.log(data);
+    // console.log(data);
   };
   render() {
     let erremail = (
