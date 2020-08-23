@@ -57,7 +57,7 @@ export default class login extends Component {
       .then((data) => {
         // console.log(data);
         localStorage.setItem("token", JSON.stringify(data.accessToken));
-        if (data.status === "success") {
+        if (data.status === "success") {  
           //here is the animation
           Toast.fire({
             icon: "success",

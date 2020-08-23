@@ -37,3 +37,33 @@ export const fetch_user_newsfeed = (token) => (dispatch) => {
     })
   })
 }
+
+export const fetch_post=()=>dispatch=>{
+  fetch("http://localhost:1234/api/user/getPost_Public")
+  .then(res=>res.json())
+  .then(data=>{
+    dispatch({
+      type: action_types.fetch_post,
+      payload:data
+    })
+  })
+}
+
+export const fetch_user_private_post=(token)=>dispatch=>{
+  fetch("http://localhost:1234/api/user/getPost_Private", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      "Access-Control-Allow-Origin": "*",
+      Authorization: `${token}`,
+    },
+  })
+  .then(res=>res.json())
+  .then(data=>{
+    dispatch({
+      type:action_types.fetch_user_private_post,
+      payload:data
+    })
+  })
+}

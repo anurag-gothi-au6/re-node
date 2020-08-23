@@ -24,6 +24,6 @@ ReactDOM.render(
     </Switch>
     </Router>
     </Provider>
-  </React.StrictMode>,
+    </React.StrictMode>,
   document.getElementById('root')
 );

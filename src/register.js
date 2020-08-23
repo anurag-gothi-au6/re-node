@@ -72,16 +72,23 @@ export default class login extends Component {
         .then((res) => res.json())
         .then((data) => {
           console.log(data)
-          localStorage.setItem("token", JSON.stringify(data.accessToken));
-          if (data.accessToken) {
+          if (data.status==='success') {
             //here is the animation
+            localStorage.setItem("token", JSON.stringify(data.createUser.accessToken));
             Toast.fire({
               icon: "success",
-              title: "Signed in successfully",
+              title: "Congratulations Account Created Successfully",
             }).then(()=>{
-              window.location.href = "/home";
+              // window.location.href = "/login";
+              this.props.history.push('/login')
             });
             //end
+          }
+          else{
+            Toast.fire({
+              icon: "error",
+              title: data.message
+            })
           }
         })
         .catch((err) => console.log(err));

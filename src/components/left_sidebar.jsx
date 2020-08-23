@@ -1,6 +1,4 @@
 import React, { Component, Fragment } from "react";
-import profilepic from '../assests/img/male.jpg'
-// import profilepic from '../assests/img/female.png'
 import '../assests/css/left_sidebar.css'
 
 export default class LeftSidebar extends Component {
@@ -12,7 +10,7 @@ export default class LeftSidebar extends Component {
           {/* this should be changed doing this for temperary */}
           <div className='left_sidebar_profile'>
             <div className='left_sidebar_profile_pic_div'>     
-            <img src={profilepic} alt='profile' className='left_sidebar_profile_pic'/>
+            <img src={this.props.picvalue} alt='profile' className='left_sidebar_profile_pic'/>
             </div>
     <span className='left_sidebar_profile_name'>{this.props.namevalue}</span>
             </div>
