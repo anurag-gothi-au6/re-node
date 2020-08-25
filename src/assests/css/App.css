@@ -1,20 +1,24 @@
 .main_container{
-  display: flex;
-  justify-content: space-between;
+  /* display: flex;
+  justify-content: space-between; */
+  clear: both;
 }
 .center_container{
   /* margin-left: 1em; */
   /* margin-right: 1em; */
-  border: 1px solid black;
-  width: 100em;
-  height: 150em;
+  float: center;
+  /* height: 150em; */
+  /* margin-right: 10em; */
+  /* margin-left:15em; */
 }
 .post_div{
   border: 1px solid white;
-  margin-top: 6em;
-  margin-left: 2em;
-  margin-right: 2em;
-  height: 100em;
+  /* margin-top: 6em; */
+  padding-top: 6em ;
+  /* width: 65em; */
+  /* margin-left: 20em; */
+  /* margin-right: 14em; */
+  width: 65em;
 }
 .addpost{
   margin-left: 6.9em;
@@ -69,7 +73,7 @@
   height: 35em;
   width: 50em;
   box-shadow: 0px 0px 10px 0px rgb(0,0,0,0.3);
-  margin-left: 7em;
+  /* margin-left: 7em; */
   margin-top: 2em;
 }
 /* CSS */
@@ -81,7 +85,7 @@
 }
 .video_container1{
   margin-top:1em;
-  height: 10em;
+  height: 9.5em;
   width: 45em;
 }
 .like_div123{

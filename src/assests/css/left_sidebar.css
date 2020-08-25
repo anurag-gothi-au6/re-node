@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat');
 @import url('https://fonts.googleapis.com/css2?family=Roboto');
 .left_sidebar{
-  position: sticky;
+  position: fixed;
   top: 0;
   width: 15em;
   height: 100vh;
   /* padding-right: 15px; */
   /* margin-right: 15px; */
-  /* float: left; */
+  float: left;
   font-style: italic;
   background-color: lightgray;
   /* background image gradient code  */

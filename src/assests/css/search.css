@@ -4,11 +4,13 @@
 
 #wrap {
     /* float: right; */
-    margin: 1em 1em;
+    /* margin: 1em 1em; */
     /* display: inline-block; */
     position: relative;
     /* height: 60px; */
     /* padding: 0; */
+    right: 16em;
+    top: 1em;
 }
 
 .search159 {

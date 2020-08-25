@@ -1,6 +1,6 @@
 .right_sidebar{
-    position: sticky;
-    top: 0;
+    position: fixed;
+    right: 0px;
     border: 1px solid black;
     float: right;
     width: 15em;

@@ -53,6 +53,27 @@ class App extends Component {
       showNav: true,
     });
   };
+  objectgenerator=(media)=>{
+    let a=[]
+    for(let i=0;i<media.length;i++){
+      this.state.videoregex.test(media[i]) ? 
+      a.push({renderItem: () => {
+        return (
+          <video
+            name="video"
+            // onPlay={this.play159}
+            // onPause={this.pause159}
+            width="450"
+            height="320"
+            src={media[i]}
+            controls
+          ></video>
+        );
+      },}) :
+      a.push({ original: media[i] })
+    }
+    return a
+  }
 
   render() {
     if (this.props.userdata.data) {
@@ -173,7 +194,7 @@ class App extends Component {
               </div>
               </center>
               {/* for like button and many more */}
-              <div style={{ marginTop: "17em" }}>
+              <div style={{ marginTop: "16em" }}>
                 <div style={{ borderTop:"1px solid #d3d3d3",marginLeft:'1.5em',marginRight:'1.5em' }}></div>
                 <div
                   style={{ display: "flex", justifyContent: "space-around" }}
@@ -195,14 +216,68 @@ class App extends Component {
           )}
         </div>
       ) : (
-        <div key={element._id}></div>
+        <div key={element._id}>
+            <div className="postcontainer">
+              <div
+                style={{
+                  display: "flex",
+                  marginLeft: "1em",
+                  marginTop: "0.5em",
+                }}
+              >
+                <img
+                  src={element.creator.defaultProfile}
+                  alt={'profile'}
+                  style={{ borderRadius: "50%", height: "3em" }}
+                />
+                <h6 style={{ marginTop: "1em", marginLeft: "0.5em" }}>
+                  {element.creator.name}
+                </h6>
+              </div>
+              <center>
+              <div className="container1">
+                <ImageGallery
+                  showNav={this.state.showNav}
+                  showFullscreenButton={this.state.showFullscreenButton}
+                  showThumbnails={false}
+                  items={this.objectgenerator(element.media)} //need to call a function
+                  lazyLoad={true}
+                  infinite={false}
+                  showPlayButton={false}
+                  onErrorImageURL={this.state.errorimg}
+                />
+              </div>
+              </center>
+              {/* for like button and many more */}
+              <div style={{ marginTop: "16em" }}>
+                <div style={{ borderTop:"1px solid #d3d3d3",marginLeft:'1.5em',marginRight:'1.5em' }}></div>
+                <div
+                  style={{ display: "flex", justifyContent: "space-around" }}
+                >
+                  <div className="like_div123">
+                    <span className="material-icons-outlined">thumb_up</span>
+                    <p style={{marginLeft:'0.5em'}}>Like</p>
+                  </div>
+                  <div className="comment_div123">
+                    <span className="material-icons">chat_bubble_outline</span>
+                    <p style={{marginLeft:'0.5em'}}>Comment</p>
+                  </div>
+                </div>
+                <div style={{ borderBottom: "1px solid #d3d3d3",marginLeft:'1.5em',marginRight:'1.5em' }}></div>
+              </div>
+              {/* end */}
+            </div>
+            </div>
+            
+              
       )
     );
 
     return (
       <Fragment>
         <div className="main_container">
-          <div>
+          {/* start */}
+          <div>  
             {this.props.userdata.data ? (
               <LeftSidebar
                 namevalue={this.props.userdata.data.name}
@@ -212,7 +287,11 @@ class App extends Component {
               <LeftSidebar />
             )}
           </div>
-          <div className="center_container">
+          {/* end */}
+          <div>
+            <RightSidebar />
+          </div>
+          <center><div className="center_container">
             {/* search bar start */}
             <section>
               <div>
@@ -259,13 +338,11 @@ class App extends Component {
                     </div>
                   </div>
                   {/* end */}
-                </div>
-                {/* post container */}
-                <div
+                  <div
                   style={{
-                    display: "flex",
+                    // display: "flex",
                     // marginTop: "5em",
-                    flexWrap: "wrap",
+                    // flexWrap: "wrap",
                   }}
                 >
                   {this.props.all_posts.length === 0 ? (
@@ -278,14 +355,16 @@ class App extends Component {
                     </center>
                   )}
                 </div>
+
+                  
+                </div>
+                {/* post container */}
+                
               </div>
             </section>
             {/* end of add post */}
-          </div>
+          </div></center>
           {/* end of center container */}
-          <div>
-            <RightSidebar />
-          </div>
         </div>
       </Fragment>
     );
