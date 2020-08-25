@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat');
 @import url('https://fonts.googleapis.com/css2?family=Roboto');
 .left_sidebar{
+  position: sticky;
+  top: 0;
   width: 15em;
   height: 100vh;
   /* padding-right: 15px; */

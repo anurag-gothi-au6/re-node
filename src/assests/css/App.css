@@ -7,17 +7,18 @@
   /* margin-right: 1em; */
   border: 1px solid black;
   width: 100em;
+  height: 150em;
 }
 .post_div{
-  border: 1px solid red;
+  border: 1px solid white;
   margin-top: 6em;
   margin-left: 2em;
   margin-right: 2em;
-  height: 10em;
+  height: 100em;
 }
 .addpost{
-  margin-left: 2em;
-  margin-right: 2em;
+  margin-left: 6.9em;
+  margin-right: 7.5em;
   border: 1px white solid;
   height: 8em;
   box-shadow: 0px 0px 15px 0px rgb(0,0,0,0.2);
@@ -62,6 +63,44 @@
   transform: scale(1.1);
   transition: 1s;
   box-shadow: 0px 0px 10px 0px rgb(0,0,0,0.3);
+}
+.postcontainer{
+  border: 1px solid white;
+  height: 35em;
+  width: 50em;
+  box-shadow: 0px 0px 10px 0px rgb(0,0,0,0.3);
+  margin-left: 7em;
+  margin-top: 2em;
+}
+/* CSS */
+@import "~react-image-gallery/styles/css/image-gallery.css";
+.container1{
+  margin-top:1em;
+  height: 10em;
+  width: 25em;
+}
+.video_container1{
+  margin-top:1em;
+  height: 10em;
+  width: 45em;
+}
+.like_div123{
+  display: flex;
+  margin-top: 0.5em;
+}
+.comment_div123{
+  display: flex;
+  margin-top: 0.5em;
+}
+.like_div123:hover{
+  cursor: pointer;
+  transform:scale(1.1);
+  transition: .5s;
+}
+.comment_div123:hover{
+  cursor: pointer;
+  transform:scale(1.1);
+  transition: .5s;
 }
 
 
