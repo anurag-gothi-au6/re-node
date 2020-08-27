@@ -1,23 +1,29 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+node_modules/
+variables.env
+*.log
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
+client/node_modules
+client/build
+client/.gitignore
+client/README.md
 
-# testing
-/coverage
+screenshots/
 
-# production
-/build
 
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+public/*
+# !public/images
 
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# public/images/chat-images/*
+# !public/images/chat-images/placeholder.png
+
+# public/images/post-images/*
+# !public/images/post-images/placeholder.png
+# !public/images/post-images/thumbnail
+# public/images/post-images/thumbnail/*
+# !public/images/post-images/thumbnail/placeholder.png
+
+# public/images/profile-picture/*
+# !public/images/profile-picture/100x100
+# !public/images/profile-picture/person.png
+# public/images/profile-picture/100x100/*
+# !public/images/profile-picture/100x100/person.png

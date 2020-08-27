@@ -1,8 +1,0 @@
-.right_sidebar{
-    position: fixed;
-    right: 0px;
-    border: 1px solid black;
-    float: right;
-    width: 15em;
-    height: 100vh;
-}
