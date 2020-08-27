@@ -5,7 +5,7 @@ A MERN stack social network application with MVP features implemented: user auth
 
 ## Live Link
 
-[Renode -Social Network]([https://re-node.herokuapp.com/](https://re-node.herokuapp.com/))
+[Renode -Social Network](https://re-node.herokuapp.com/)
 
 
 
