@@ -70,7 +70,7 @@ npm run dev
 
 - [Express.js](https://expressjs.com/) - Backend web framework
 - [JSON Web Token](https://jwt.io/) - A standard to securely authenticate HTTP requests
-- [Semantic-UI]((https://react.semantic-ui.com/)) - UI library for React
+- [Semantic-UI](https://react.semantic-ui.com/) - UI library for React
 - [MongoDB](https://www.mongodb.com/) - Database to store document-based data
 - [Mongoose](https://mongoosejs.com/) - Object-modeling tool for Node.js
 - [Node.js](https://nodejs.org/en/) - Runtime environment to help build fast server applications
